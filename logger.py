@@ -59,8 +59,9 @@ class MessageCounter(telepot.helper.ChatHandler):
         self.sender.sendMessage(self._count)
 
 def sendLog(bot, chat_id):
-    for line in tail("-F", location, _iter=True):
-        bot.sendMessage(chat_id, line)
+    for section in tail("-F", location, _iter=True):
+        sen = section.replace(',', '\n')
+        bot.sendMessage(chat_id, sen)
 
 
 # deligate bot
